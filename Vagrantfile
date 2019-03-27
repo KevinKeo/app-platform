@@ -14,13 +14,11 @@ Vagrant.configure("2") do |config|
     application.vm.provision "shell", path: "application.sh"
     application.vm.synced_folder "./shared/", "/tmp/vagrant", create: true 
     application.vm.network "private_network", type:"dhcp"
-    application.vm.network "forwarded_port", guest: 8080, host: 18080
   end
 
   config.vm.define "postgres" do |postgres| 
     postgres.vm.box = "ubuntu/xenial64"
     postgres.vm.provision "shell", path: "postgresql.sh"
-    postgres.vm.network "forwarded_port", guest: 5432, host: 15432
     postgres.vm.network "private_network", type:"dhcp"
   end
 

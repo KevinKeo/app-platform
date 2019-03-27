@@ -11,8 +11,7 @@ sudo apt-get install -y postgresql postgresql-contrib
 echo "CREATE ROLE vagrant SUPERUSER CREATEDB CREATEROLE LOGIN" | sudo -u postgres psql -a -f -
 
 #CREATE AN APP USER
-sudo useradd -g users -d /home/appuser -s /bin/bash -p 'appuser' appuser
-useradd -g users  --home /home/appuser/ --create-home /home/appuser -s /bin/bash -p $(echo appuser | openssl passwd -1 -stdin) appuser
+sudo useradd -g users -d /home/appuser -m -s /bin/bash -p $(echo appuser | openssl passwd -1 -stdin) appuser
 
 #CREATE POSTGRES APP USER
 echo "CREATE ROLE appuser LOGIN ENCRYPTED PASSWORD 'appuser'" | sudo -u postgres psql -a -f -
