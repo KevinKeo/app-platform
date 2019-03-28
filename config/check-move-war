@@ -1,0 +1,5 @@
+#!/bin/bash
+
+if [ "ls -A /tmp/tomcat-war/" ]; then
+    mv /tmp/tomcat-war/* /opt/tomcat/webapps
+fi
