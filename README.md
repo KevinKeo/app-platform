@@ -2,7 +2,7 @@
 
 Deployment of a tomcat server and postgresql server.
 
-Allow to focus on the development of MVP application and then just deploy a war on tomcat.
+Allow to focus on the development of MVP application.
 
 
 ## Getting Started
