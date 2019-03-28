@@ -11,15 +11,16 @@ Vagrant.configure("2") do |config|
   
   config.vm.define "application" do |application|
     application.vm.box = "generic/ubuntu1804"
+    application.vm.provision "file", source: "config", destination: "/tmp/config"
     application.vm.provision "shell", path: "application.sh"
-    application.vm.synced_folder "./shared/", "/tmp/vagrant", create: true 
-    application.vm.network "private_network", type:"dhcp"
+    application.vm.synced_folder "./tomcat-war/", "/tmp/tomcat-war", create: true 
+    application.vm.network "private_network", ip:"172.28.128.10"
   end
 
   config.vm.define "postgres" do |postgres| 
     postgres.vm.box = "ubuntu/xenial64"
     postgres.vm.provision "shell", path: "postgresql.sh"
-    postgres.vm.network "private_network", type:"dhcp"
+    postgres.vm.network "private_network", ip:"172.28.128.20"
   end
 
 
